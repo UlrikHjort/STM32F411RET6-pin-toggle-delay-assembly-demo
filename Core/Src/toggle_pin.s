@@ -59,13 +59,13 @@ get_tickASM:
 @ Add -Wa,-mimplicit-it=thumb
 @ delayASM(delayMs)
 delayASM:
-		push {r4-r5, lr}
-		ldr r1,=tick @ Get initial tick
-		ldr r2, [r1]
+	push {r4-r5, lr}
+	ldr r1,=tick @ Get initial tick
+	ldr r2, [r1]
     	add r3,r0, TICK_FREQ
 wait:	ldr r4, [r1] @ Get current tick
-   		sub r5, r4, r2
-		cmp r5, r3
-		blt wait @ if delay > (current_tick - initial_tick stay in loop
-		pop {r4-r5, pc}
-		bx lr
+   	sub r5, r4, r2
+	cmp r5, r3
+	blt wait @ if delay > (current_tick - initial_tick stay in loop
+	pop {r4-r5, pc}
+	bx lr
